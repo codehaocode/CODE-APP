@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		665A89B123A80F2800E8317C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665A89B023A80F2800E8317C /* HomeViewController.swift */; };
+		665A89B323A835A000E8317C /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665A89B223A835A000E8317C /* WebViewController.swift */; };
 		668C89E3238EE663001EA224 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668C89E2238EE663001EA224 /* ARViewController.swift */; };
 		668C89E5238EE693001EA224 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 668C89E4238EE692001EA224 /* art.scnassets */; };
 		B2112CC123758D1500D37034 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2112CC023758D1500D37034 /* Constants.swift */; };
@@ -29,6 +30,7 @@
 /* Begin PBXFileReference section */
 		3C6426E2E5C9FF342B8B0E71 /* Pods_CODE.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CODE.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		665A89B023A80F2800E8317C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		665A89B223A835A000E8317C /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		668C89E2238EE663001EA224 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
 		668C89E4238EE692001EA224 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		B2112CC023758D1500D37034 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				B2BCE675237419A500EE38B2 /* ChatViewController.swift */,
 				668C89E2238EE663001EA224 /* ARViewController.swift */,
 				665A89B023A80F2800E8317C /* HomeViewController.swift */,
+				665A89B223A835A000E8317C /* WebViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2BCE678237419A500EE38B2 /* LoginViewController.swift in Sources */,
+				665A89B323A835A000E8317C /* WebViewController.swift in Sources */,
 				B2BCE66E2374199C00EE38B2 /* Styling.swift in Sources */,
 				B2BCE66F2374199C00EE38B2 /* form.swift in Sources */,
 				B2BCE6562374194E00EE38B2 /* AppDelegate.swift in Sources */,
