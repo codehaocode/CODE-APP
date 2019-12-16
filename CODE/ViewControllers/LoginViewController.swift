@@ -11,18 +11,14 @@ import Firebase
 import GoogleSignIn
 
 
-class ViewController: UIViewController, AppDelegateLoginDelegate {
+class LoginViewController: UIViewController, AppDelegateLoginDelegate {
 
     
     // Outlets
     @IBOutlet weak var emailTextField: UITextField!
-   
     @IBOutlet weak var passwordTextField: UITextField!
-    
     @IBOutlet weak var loginButton: UIButton!
-    
     @IBOutlet weak var googleSignInButton: GIDSignInButton!
-    
     // Variables
     
     
@@ -64,8 +60,8 @@ class ViewController: UIViewController, AppDelegateLoginDelegate {
         
         
         // Style the elements
-        Styling.styleTextField(emailTextField)
-        Styling.styleTextField(passwordTextField)
+//        Styling.styleTextField(emailTextField)
+//        Styling.styleTextField(passwordTextField)
         Styling.styleFilledButton(loginButton)
 
     }
@@ -91,7 +87,7 @@ class ViewController: UIViewController, AppDelegateLoginDelegate {
                 // Sign in user
                 self.signInUser(email: email, password: password)
             } else {
-                print(error?.localizedDescription)
+                print("Create User error")
             }
         }
     }
@@ -107,8 +103,7 @@ class ViewController: UIViewController, AppDelegateLoginDelegate {
                 self.performSegue(withIdentifier: "loginToHome", sender: self)
             } else if (error?._code == AuthErrorCode.userNotFound.rawValue){
                 self.createUser(email: email, password: password) } else {
-                print(error)
-                print(error?.localizedDescription)
+                print("Sign In User erro")
             }
         }
         
@@ -120,10 +115,7 @@ class ViewController: UIViewController, AppDelegateLoginDelegate {
     
     
     @IBAction func signInButtonPressed(_ sender: Any) {
-    
         signInUser(email: emailTextField.text!, password: passwordTextField.text!)
-        
-    
     }
     
     // Actions

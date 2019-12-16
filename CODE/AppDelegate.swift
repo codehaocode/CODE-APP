@@ -11,14 +11,12 @@ import Firebase
 import GoogleSignIn
 import IQKeyboardManagerSwift
 
-
-
 protocol AppDelegateLoginDelegate: AnyObject {
     func didSuccessfullyPerformLogin()
 }
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
    
     let userDefault = UserDefaults()
     
@@ -63,13 +61,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         // Perform any operations on signed in user here.
         guard let authentication = user.authentication else { return }
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
-        let userId = user.userID                  // For client-side use only!
-        let idToken = user.authentication.idToken // Safe to send to the server
-        let fullName = user.profile.name
-        let givenName = user.profile.givenName
-        let familyName = user.profile.familyName
-        let email = user.profile.email
-        print(fullName)
+//        let userId = user.userID                  // For client-side use only!
+//        let idToken = user.authentication.idToken // Safe to send to the server
+//        let fullName = user.profile.name
+//        let givenName = user.profile.givenName
+//        let familyName = user.profile.familyName
+//        let email = user.profile.email
+//        print(fullName)
         Auth.auth().signIn(with: credential) { (result, error) in
                 if error == nil {
                     self.userDefault.set(true, forKey: "usersignedin")
@@ -81,7 +79,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     
 
                 } else {
-                    print(error?.localizedDescription)
+                    print("Login Error")
                 }
             }
         
