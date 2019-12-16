@@ -43,6 +43,7 @@ class ChatViewController: UIViewController {
         
         guard let email = Auth.auth().currentUser?.email else {return}
         emailTextField.text = email
+        tabBarItem.title = "Chat"
         
         setUpElements()
             
