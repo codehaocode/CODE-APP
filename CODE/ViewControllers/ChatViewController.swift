@@ -54,7 +54,7 @@ class ChatViewController: UIViewController {
     
     func setUpElements() {
         // Style the elements
-        Styling.styleTextField(messageTextField)
+//        Styling.styleTextField(messageTextField)
         Styling.styleFilledButton(sendButton)
     }
     
