@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import GoogleSignIn
 import SceneKit
 import ARKit
 
@@ -16,6 +18,8 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
     
     @IBOutlet var sceneView: ARSCNView!
     
+    let userDefault = UserDefaults.standard
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,7 +29,7 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = false
         
-//        sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
+        sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
         
         sceneView.autoenablesDefaultLighting = true
         
@@ -48,6 +52,8 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         
         // Pause the view's session
         sceneView.session.pause()
+        
+        
     }
     
     // MARK: - ARSCNViewDelegate
@@ -69,9 +75,9 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         guard let planeAnchor = anchor as? ARPlaneAnchor else { return }
         
         if !hoopAdded {
-        let wall = createWall(planeAnchor: planeAnchor)
-        node.addChildNode(wall)
-        wall.runAction(waitRemoveAction)
+            let wall = createWall(planeAnchor: planeAnchor)
+            node.addChildNode(wall)
+            wall.runAction(waitRemoveAction)
         }
     }
     
@@ -152,14 +158,14 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         
     }
     
-
-     // Override to create and configure nodes for anchors added to the view's session.
-     func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-     let node = SCNNode()
-     
-     return node
-     }
- 
+    
+    // Override to create and configure nodes for anchors added to the view's session.
+    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
+        let node = SCNNode()
+        
+        return node
+    }
+    
     func session(_ session: ARSession, didFailWithError error: Error) {
         // Present an error message to the user
         

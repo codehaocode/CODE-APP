@@ -138,11 +138,11 @@
 		B2BCE672237419A500EE38B2 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				B2BCE674237419A500EE38B2 /* LoginViewController.swift */,
-				B2BCE675237419A500EE38B2 /* ChatViewController.swift */,
-				668C89E2238EE663001EA224 /* ARViewController.swift */,
-				665A89B023A80F2800E8317C /* HomeViewController.swift */,
 				665A89B223A835A000E8317C /* WebViewController.swift */,
+				B2BCE674237419A500EE38B2 /* LoginViewController.swift */,
+				665A89B023A80F2800E8317C /* HomeViewController.swift */,
+				668C89E2238EE663001EA224 /* ARViewController.swift */,
+				B2BCE675237419A500EE38B2 /* ChatViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";

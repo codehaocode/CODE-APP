@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--CODE-->
+        <!--Login-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="CODE" customModuleProvider="target" sceneMemberID="viewController">
@@ -73,7 +73,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="CODE" id="KVQ-es-Ftq"/>
+                    <navigationItem key="navigationItem" title="Login" largeTitleDisplayMode="always" id="KVQ-es-Ftq">
+                        <barButtonItem key="backBarButtonItem" title="Sign Out" id="1w1-a2-oLI"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="emailTextField" destination="RbV-iy-LjF" id="Mc6-GO-8Cl"/>
                         <outlet property="googleSignInButton" destination="xdv-4b-0QQ" id="Fb5-OJ-rtv"/>
@@ -153,25 +155,11 @@
                         <viewLayoutGuide key="safeArea" id="BZl-Eg-6fb"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Chat" image="bolt.horizontal.circle" catalog="system" landscapeImage="bolt.horizontal.circle" selectedImage="bolt.horizontal.circle" id="0aT-Ml-DT0"/>
-                    <navigationItem key="navigationItem" title="CODE" id="j5r-H3-UEy">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="r2N-Y7-47O">
-                            <color key="tintColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="done" id="Qb0-g3-wOc">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dlb-oi-azG">
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="SIgn Out"/>
-                                <connections>
-                                    <action selector="signOutPressed:" destination="dxo-Vf-cF4" eventType="touchUpInside" id="1Iy-rc-KMC"/>
-                                </connections>
-                            </button>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="CODE" id="j5r-H3-UEy"/>
                     <connections>
                         <outlet property="emailTextField" destination="I6I-Mr-A5D" id="CsS-tF-HNq"/>
                         <outlet property="messageTextField" destination="hEv-vP-TZI" id="iTa-PC-cbW"/>
                         <outlet property="sendButton" destination="xoq-Hc-58I" id="vh1-Cf-Yh0"/>
-                        <outlet property="signOutButton" destination="dlb-oi-azG" id="kfI-9e-ksW"/>
                         <outlet property="tableView" destination="atG-p1-efg" id="H8b-s9-t8d"/>
                     </connections>
                 </viewController>
@@ -206,6 +194,7 @@
                         <viewLayoutGuide key="safeArea" id="4ML-dU-Q4k"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="AR" image="gamecontroller" catalog="system" selectedImage="gamecontroller" id="vWt-tn-Aw6"/>
+                    <navigationItem key="navigationItem" id="2Ut-jJ-1bk"/>
                     <connections>
                         <outlet property="sceneView" destination="gFt-xk-AlB" id="ZxS-gd-CtI"/>
                     </connections>
@@ -246,7 +235,8 @@
                         <viewLayoutGuide key="safeArea" id="izf-3G-RI1"/>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="CJk-5v-Zqy">
-                        <barButtonItem key="rightBarButtonItem" title="Sign In" id="b9M-Jq-ddt">
+                        <barButtonItem key="rightBarButtonItem" title="Login" id="b9M-Jq-ddt">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <segue destination="BYZ-38-t0r" kind="show" id="kri-IF-s4p"/>
                             </connections>
@@ -263,6 +253,7 @@
         <!--Navigation Controller-->
         <scene sceneID="t58-3j-V94">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pkp-Il-v6D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="am6-ZS-n9B" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ZbY-fF-32v">
@@ -283,7 +274,6 @@
                         <segue destination="0Xq-7q-GCg" kind="relationship" relationship="rootViewController" id="5Pc-Bf-Qgq"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Pkp-Il-v6D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-926" y="175"/>
         </scene>
@@ -292,9 +282,6 @@
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="rMh-Zd-WhJ" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="8ed-OY-VO7">
-                        <barButtonItem key="backBarButtonItem" title="Sign Out" id="btr-id-aId"/>
-                    </navigationItem>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qRA-RV-Mcx">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -344,6 +331,9 @@
                         <viewLayoutGuide key="safeArea" id="qaY-61-D4P"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" selectedImage="house" id="GjN-kp-JFS"/>
+                    <navigationItem key="navigationItem" id="3LD-eJ-Mcn">
+                        <barButtonItem key="rightBarButtonItem" title="Sign Out" id="hb4-mT-kmY"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3KJ-X5-9XZ" sceneMemberID="firstResponder"/>
             </objects>

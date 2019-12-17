@@ -14,12 +14,11 @@ import GoogleSignIn
 
 
 class ChatViewController: UIViewController {
-
+    
     // Outlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var emailTextField: UILabel!
     @IBOutlet weak var messageTextField: UITextField!
-    @IBOutlet weak var signOutButton: UIButton!
     
     @IBOutlet weak var sendButton: UIButton!
     
@@ -29,11 +28,11 @@ class ChatViewController: UIViewController {
     
     // Variables
     var messages: [Message] = []
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        navigationItem.leftBarButtonItem?.isEnabled = false
         // tableView.delegate = self
         tableView.dataSource = self
         title = K.appName
@@ -44,50 +43,52 @@ class ChatViewController: UIViewController {
         guard let email = Auth.auth().currentUser?.email else {return}
         emailTextField.text = email
         tabBarItem.title = "Chat"
+
+        
         
         setUpElements()
-            
+        
     }
+    
+    
     
     func setUpElements() {
         // Style the elements
         Styling.styleTextField(messageTextField)
         Styling.styleFilledButton(sendButton)
-        Styling.styleFilledButton(signOutButton)
-        
     }
     
     func loadMessages() {
-
+        
         db.collection(K.FStore.collectionName)
             .order(by: K.FStore.dataField)
-             .addSnapshotListener  { (querySnapshot, error) in
-            self.messages = []
-            if let error = error {
-                print(error.localizedDescription)
-            } else {
-                if let snapShotDocuments = querySnapshot?.documents {
-                    for doc in snapShotDocuments {
-                        let data = doc.data()
-                        if let messageSender = data[K.FStore.senderField] as? String, let messageBody = data[K.FStore.bodyField] as? String {
-                            let newMessage = Message(sender: messageSender, body: messageBody)
-                            self.messages.append(newMessage)
-                            
-                            DispatchQueue.main.async {
-                                self.tableView.reloadData()
-                                let indexPath = IndexPath(row: self.messages.count - 1, section: 0)
-                                self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
-
-                            
+            .addSnapshotListener  { (querySnapshot, error) in
+                self.messages = []
+                if let error = error {
+                    print(error.localizedDescription)
+                } else {
+                    if let snapShotDocuments = querySnapshot?.documents {
+                        for doc in snapShotDocuments {
+                            let data = doc.data()
+                            if let messageSender = data[K.FStore.senderField] as? String, let messageBody = data[K.FStore.bodyField] as? String {
+                                let newMessage = Message(sender: messageSender, body: messageBody)
+                                self.messages.append(newMessage)
+                                
+                                DispatchQueue.main.async {
+                                    self.tableView.reloadData()
+                                    let indexPath = IndexPath(row: self.messages.count - 1, section: 0)
+                                    self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+                                    
+                                    
+                                }
+                                
                             }
-
                         }
-                        }
+                    }
                 }
-            }
         }
     }
-
+    
     
     // Actions
     @IBAction func sendPressed(_ sender: UIButton) {
@@ -95,19 +96,19 @@ class ChatViewController: UIViewController {
         if let messageBody = messageTextField.text, let messageSender = Auth.auth().currentUser?.email {
             
             db.collection(K.FStore.collectionName).addDocument(data: [
-                    K.FStore.senderField: messageSender,
-                    K.FStore.bodyField: messageBody,
-                    K.FStore.dataField: Date().timeIntervalSince1970
-                ]) { (error) in
+                K.FStore.senderField: messageSender,
+                K.FStore.bodyField: messageBody,
+                K.FStore.dataField: Date().timeIntervalSince1970
+            ]) { (error) in
                 if let error = error {
                     print(error.localizedDescription)
                 } else {
                     print("Successfully saved data.")
                     
                     DispatchQueue.main.async {
-                       self.messageTextField.text = ""
+                        self.messageTextField.text = ""
                     }
-                  
+                    
                 }
             }
             
@@ -117,26 +118,27 @@ class ChatViewController: UIViewController {
     
     
     
-    @IBAction func signOutPressed(_ sender: Any) {
-        
-        do {
-            try Auth.auth().signOut()
-//            try GIDSignIn.sharedInstance().signOut()
-//            userDefault.removeObject(forKey: "usersignedin")
-//            userDefault.synchronize()
-            navigationController?.popViewController(animated: true)
-            print("User signed out")
-        } catch let error as NSError {
-            print(error.localizedDescription)
-        }
-        
-        
-    }
-    
-
+//    @IBAction func signOutPressed(_ sender: Any) {
+//
+//        do {
+//            try Auth.auth().signOut()
+//            //            try GIDSignIn.sharedInstance().signOut()
+//            //            userDefault.removeObject(forKey: "usersignedin")
+//            //            userDefault.synchronize()
+//            navigationController?.popViewController(animated: true)
+//            print("User signed out")
+//        } catch let error as NSError {
+//            print(error.localizedDescription)
+//        }
+//
+//
+//    }
     
     
-
+    
+    
+    
+    
 }
 
 extension ChatViewController: UITableViewDataSource {
@@ -153,18 +155,18 @@ extension ChatViewController: UITableViewDataSource {
         
         // This is a message from the current user.
         if message.sender == Auth.auth().currentUser?.email{
-//            cell.leftImageView.isHidden = true
-//            cell.rightImageView.isHidden = false
-//            cell.messageBubble.backgroundColor = UIColor
+            //            cell.leftImageView.isHidden = true
+            //            cell.rightImageView.isHidden = false
+            //            cell.messageBubble.backgroundColor = UIColor
             cell.backgroundColor = UIColor.init(red:0.00, green:0.00, blue:0.00, alpha:0.5)
             
         }
-        
-        // This is a message from other senders.
+            
+            // This is a message from other senders.
         else {
             cell.backgroundColor = UIColor.init(red:0.00, green:0.00, blue:0.00, alpha:0.0)
         }
-
+        
         return cell
     }
     
